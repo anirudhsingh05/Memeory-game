@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import SingleCard from "./components/SingleCard";
 
 const cardImages = [
-  { src: "/img/helmet-1.png", matched: false },
-  { src: "/img/potion-1.png", matched: false },
-  { src: "/img/ring-1.png", matched: false },
-  { src: "/img/scroll-1.png", matched: false },
-  { src: "/img/shield-1.png", matched: false },
-  { src: "/img/sword-1.png", matched: false },
+  { src: "/img/apple.png", matched: false },
+  { src: "/img/green.png", matched: false },
+  { src: "/img/lemon.png", matched: false },
+  { src: "/img/melon.png", matched: false },
+  { src: "/img/pine.png", matched: false },
+  { src: "/img/strawberry.png", matched: false },
 ];
 
 function App() {
@@ -68,21 +67,29 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Memory Game</h1>
-      <button onClick={shuffle}>New Game</button>
+    <div>
+      <img className="fixed -z-10" src="/img/Background.png" alt="background" />
+      <div className="flex flex-col items-center ">
+        <h1 className="text-4xl font-bold m-4">Memory Game</h1>
 
-      <div className="grid grid-cols-4 mt-20">
-        {card.map((card) => (
-          <SingleCard
-            key={card.id}
-            card={card}
-            handleChoice={handleChoice}
-            flipped={card === choiceOne || card === choiceTwo || card.matched}
-            disabled={disabled}
-          />
-        ))}
+        <div className="grid grid-cols-6 mt-10 ">
+          {card.map((card) => (
+            <SingleCard
+              key={card.id}
+              card={card}
+              handleChoice={handleChoice}
+              flipped={card === choiceOne || card === choiceTwo || card.matched}
+              disabled={disabled}
+            />
+          ))}
+        </div>
       </div>
+      <button
+        className="border-2 font-bold hover:bg-green-400 p-4 mt-10"
+        onClick={shuffle}
+      >
+        New Game
+      </button>
     </div>
   );
 }

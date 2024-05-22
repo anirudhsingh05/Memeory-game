@@ -6,11 +6,15 @@ const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
   };
 
   return (
-    <div className="relative">
-      <div className="flex flex-col justify-center">
-        <img className="" src={card.src} alt="images" />
+    <div className="">
+      <div className="flex sm:flex-wrap">
+        <img className="m-2 p-2 w-48" src={card.src} alt="images" />
         <img
-          className={flipped ? "hidden" : "absolute"}
+          className={
+            flipped
+              ? "hidden m-2 p-2 w-48"
+              : "absolute m-2 p-2 w-48 hover:border-4 border-white"
+          }
           src="/img/cover.png"
           alt="cover"
           onClick={handleClick}
